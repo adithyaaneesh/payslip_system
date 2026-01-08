@@ -20,15 +20,12 @@ class Salary(models.Model):
     deduction = models.FloatField()
     leave_days = models.IntegerField(default=0)
     
+    def leave_deduction(self):
+        return (self.employee.basic_salary / 30) * self.leave_days
+
     def gross_salary(self):
-        gs = self.employee.basic_salary + self.hra + self.da + self.other_allowance
-        return gs
-    
-    # def total_deduction(self):
-    #     leave_deduction = (self.employee.basic_salary / 30) * self.leave_days
-    #     return leave_deduction
-    
+        return self.employee.basic_salary + self.hra + self.da + self.other_allowance
+
     def net_salary(self):
-        leave_deduction = (self.employee.basic_salary / 30) * self.leave_days
-        return self.gross_salary() - self.deduction - leave_deduction
+        return self.gross_salary() - self.deduction - self.leave_deduction()
 

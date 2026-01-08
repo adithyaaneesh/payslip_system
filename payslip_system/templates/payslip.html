@@ -7,29 +7,31 @@
 </head>
 <body>
     <h2>Employee Payslip</h2>
-    <p><strong>Name:</strong> {{ employee.name }}</p>
-    <p><strong>ID:</strong> {{ employee.emp_id }}</p>
-    <p><strong>Designation:</strong> {{ employee.designation }}</p>
+
+    <p><b>Name:</b> {{ employee.employee_name }}</p>
+    <p><b>ID:</b> {{ employee.employee_id }}</p>
+    <p><b>Designation:</b> {{ employee.designation }}</p>
 
     <hr>
-    
+
     <h3>Earnings</h3>
     <p>Basic Salary: ₹{{ employee.basic_salary }}</p>
     <p>HRA: ₹{{ salary.hra }}</p>
     <p>DA: ₹{{ salary.da }}</p>
-    <p>Other Allowances: ₹{{ salary.other_allowances }}</p>
+    <p>Other Allowances: ₹{{ salary.other_allowance }}</p>
 
     <h3>Deductions</h3>
-    <p>Deductions: ₹{{ salary.deductions }}</p>
     <p>Leave Days: {{ salary.leave_days }}</p>
+    <p>Leave Deduction: ₹{{ salary.leave_deduction }}</p>
+    <p>Other Deductions: ₹{{ salary.deduction }}</p>
 
     <hr>
 
     <h3>Summary</h3>
-    <p><strong>Gross Salary:</strong> ₹{{ salary.gross_salary }}</p>
-    <p><strong>Net Salary:</strong> ₹{{ salary.net_salary }}</p>
+    <p><b>Gross Salary:</b> ₹{{ salary.gross_salary }}</p>
+    <p><b>Net Salary:</b> ₹{{ salary.net_salary }}</p>
 
-    <button onclick="window.print()">Print Payslip</button>
+    <button onclick="window.print()">🖨 Print Payslip</button>
 
 </body>
 </html>

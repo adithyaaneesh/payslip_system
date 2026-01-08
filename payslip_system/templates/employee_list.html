@@ -26,14 +26,13 @@
             <td>{{ emp.basic_salary }}</td>
 
             <td>
-                <a href="{% url 'edit_employee' emp.id %}">Edit</a>
-                |
+                <a href="{% url 'edit_employee' emp.id %}">Edit</a> |
+                <a href="{% url 'add_salary' emp.id %}">Add / Edit Salary</a> |
+                <a href="{% url 'payslip_view' emp.id %}">Payslip</a> |
                 <a href="{% url 'delete_employee' emp.id %}"
                 onclick="return confirm('Are you sure you want to delete this employee?');">
                 Delete
                 </a>
-                |
-                <a href="{% url 'payslip_view' emp.id %}">Payslip</a>
             </td>
         </tr>
         {% endfor %}
