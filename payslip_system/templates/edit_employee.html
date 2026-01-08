@@ -3,25 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <title>Edit Employee</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 500px;
+            margin: 40px auto;
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            color: #555;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+            margin-top: 20px;
+        }
+
+        form p {
+            margin-bottom: 12px;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
 
-<h2>Edit Employee</h2>
+<div class="container">
 
-<form method="post">
-    {% csrf_token %}
+    <h2>Edit Employee</h2>
 
-    <h3>Employee Details</h3>
-    {{ emp_form.as_p }}
+    <form method="post">
+        {% csrf_token %}
 
-    <h3>Salary Details</h3>
-    {{ sal_form.as_p }}
+        <h3>Employee Details</h3>
+        {{ emp_form.as_p }}
 
-    <button type="submit">Update Employee & Salary</button>
-</form>
+        <h3>Salary Details</h3>
+        {{ sal_form.as_p }}
 
-<br>
-<a href="{% url 'employee_list' %}">⬅ Back</a>
+        <button type="submit">Update Employee & Salary</button>
+    </form>
+
+    <a href="{% url 'employee_list' %}" class="back-link">⬅ Back</a>
+
+</div>
 
 </body>
 </html>

@@ -4,34 +4,166 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Payslip</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            margin: 0;
+            padding: 0;
+        }
+
+        .payslip-container {
+            width: 650px;
+            margin: 40px auto;
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .employee-info p {
+            margin: 5px 0;
+        }
+
+        hr {
+            margin: 20px 0;
+        }
+
+        .section-title {
+            background-color: #007bff;
+            color: #ffffff;
+            padding: 8px;
+            border-radius: 4px;
+            font-size: 15px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        table td {
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .right {
+            text-align: right;
+        }
+
+        .summary p {
+            font-size: 16px;
+            margin: 6px 0;
+        }
+
+        .net-salary {
+            font-size: 18px;
+            font-weight: bold;
+            color: #28a745;
+        }
+
+        .print-btn {
+            display: block;
+            margin: 20px auto 0;
+            padding: 10px 18px;
+            font-size: 15px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .print-btn:hover {
+            background-color: #1e7e34;
+        }
+
+        /* Print only payslip */
+        @media print {
+            body {
+                background: none;
+            }
+            .print-btn {
+                display: none;
+            }
+            .payslip-container {
+                box-shadow: none;
+                margin: 0;
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
+
+<div class="payslip-container">
+
     <h2>Employee Payslip</h2>
 
-    <p><b>Name:</b> {{ employee.employee_name }}</p>
-    <p><b>ID:</b> {{ employee.employee_id }}</p>
-    <p><b>Designation:</b> {{ employee.designation }}</p>
+    <div class="employee-info">
+        <p><b>Name:</b> {{ employee.employee_name }}</p>
+        <p><b>ID:</b> {{ employee.employee_id }}</p>
+        <p><b>Designation:</b> {{ employee.designation }}</p>
+    </div>
 
     <hr>
 
-    <h3>Earnings</h3>
-    <p>Basic Salary: ₹{{ employee.basic_salary }}</p>
-    <p>HRA: ₹{{ salary.hra }}</p>
-    <p>DA: ₹{{ salary.da }}</p>
-    <p>Other Allowances: ₹{{ salary.other_allowance }}</p>
-
-    <h3>Deductions</h3>
-    <p>Leave Days: {{ salary.leave_days }}</p>
-    <p>Leave Deduction: ₹{{ salary.leave_deduction }}</p>
-    <p>Other Deductions: ₹{{ salary.deduction }}</p>
+    <div class="section-title">Earnings</div>
+    <table>
+        <tr>
+            <td>Basic Salary</td>
+            <td class="right">₹{{ employee.basic_salary }}</td>
+        </tr>
+        <tr>
+            <td>HRA</td>
+            <td class="right">₹{{ salary.hra }}</td>
+        </tr>
+        <tr>
+            <td>DA</td>
+            <td class="right">₹{{ salary.da }}</td>
+        </tr>
+        <tr>
+            <td>Other Allowances</td>
+            <td class="right">₹{{ salary.other_allowance }}</td>
+        </tr>
+    </table>
 
     <hr>
 
-    <h3>Summary</h3>
-    <p><b>Gross Salary:</b> ₹{{ salary.gross_salary }}</p>
-    <p><b>Net Salary:</b> ₹{{ salary.net_salary }}</p>
+    <div class="section-title">Deductions</div>
+    <table>
+        <tr>
+            <td>Leave Days</td>
+            <td class="right">{{ salary.leave_days }}</td>
+        </tr>
+        <tr>
+            <td>Leave Deduction</td>
+            <td class="right">₹{{ salary.leave_deduction }}</td>
+        </tr>
+        <tr>
+            <td>Other Deductions</td>
+            <td class="right">₹{{ salary.deduction }}</td>
+        </tr>
+    </table>
 
-    <button onclick="window.print()">🖨 Print Payslip</button>
+    <hr>
+
+    <div class="summary">
+        <p><b>Gross Salary:</b> ₹{{ salary.gross_salary }}</p>
+        <p class="net-salary">Net Salary: ₹{{ salary.net_salary }}</p>
+    </div>
+
+    <button class="print-btn" onclick="window.print()">🖨 Print Payslip</button>
+
+</div>
 
 </body>
 </html>

@@ -4,27 +4,106 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Employee</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 400px;
+            margin: 50px auto;
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2, h3 {
+            text-align: center;
+            color: #333;
+        }
+
+        form p {
+            margin-bottom: 12px;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .salary-btn {
+            background-color: #28a745;
+            margin-top: 10px;
+        }
+
+        .salary-btn:hover {
+            background-color: #1e7e34;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        hr {
+            margin: 20px 0;
+        }
+    </style>
 </head>
 <body>
 
-<h2>Add Employee</h2>
+<div class="container">
 
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Save Employee</button>
-</form>
+    <h2>Add Employee</h2>
 
-{% if employee %}
-    <hr>
-    <h3>Salary Details</h3>
-    <a href="{% url 'add_salary' employee.id %}">
-        <button type="button"> Add Salary</button>
-    </a>
-{% endif %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save Employee</button>
+    </form>
 
-<br><br>
-<a href="{% url 'employee_list' %}">⬅ Back</a>
+    {% if employee %}
+        <hr>
+        <h3>Salary Details</h3>
+        <a href="{% url 'add_salary' employee.id %}">
+            <button type="button" class="salary-btn">Add Salary</button>
+        </a>
+    {% endif %}
+
+    <a href="{% url 'employee_list' %}" class="back-link">⬅ Back</a>
+
+</div>
 
 </body>
 </html>
