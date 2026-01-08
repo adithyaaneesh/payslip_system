@@ -3,9 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Payslip</title>
 </head>
 <body>
+    <h2>Employee Payslip</h2>
+    <p><strong>Name:</strong> {{ employee.name }}</p>
+    <p><strong>ID:</strong> {{ employee.emp_id }}</p>
+    <p><strong>Designation:</strong> {{ employee.designation }}</p>
+
+    <hr>
     
+    <h3>Earnings</h3>
+    <p>Basic Salary: ₹{{ employee.basic_salary }}</p>
+    <p>HRA: ₹{{ salary.hra }}</p>
+    <p>DA: ₹{{ salary.da }}</p>
+    <p>Other Allowances: ₹{{ salary.other_allowances }}</p>
+
+    <h3>Deductions</h3>
+    <p>Deductions: ₹{{ salary.deductions }}</p>
+    <p>Leave Days: {{ salary.leave_days }}</p>
+
+    <hr>
+
+    <h3>Summary</h3>
+    <p><strong>Gross Salary:</strong> ₹{{ salary.gross_salary }}</p>
+    <p><strong>Net Salary:</strong> ₹{{ salary.net_salary }}</p>
+
+    <button onclick="window.print()">Print Payslip</button>
+
 </body>
 </html>
