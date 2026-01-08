@@ -2,19 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit</title>
+    <title>Edit Employee</title>
 </head>
 <body>
-    <h2>Edit Employee</h2>
 
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Update</button>
-    </form>
+<h2>Edit Employee</h2>
 
-    <a href="{% url 'employee_list' %}">⬅ Back</a>
+<form method="post">
+    {% csrf_token %}
+
+    <h3>Employee Details</h3>
+    {{ emp_form.as_p }}
+
+    <h3>Salary Details</h3>
+    {{ sal_form.as_p }}
+
+    <button type="submit">Update Employee & Salary</button>
+</form>
+
+<br>
+<a href="{% url 'employee_list' %}">⬅ Back</a>
 
 </body>
 </html>

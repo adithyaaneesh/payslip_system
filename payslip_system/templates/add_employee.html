@@ -3,18 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add</title>
+    <title>Add Employee</title>
 </head>
 <body>
-    <h2>Add Employee</h2>
 
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Save</button>
-    </form>
+<h2>Add Employee</h2>
 
-    <a href="{% url 'employee_list' %}">⬅ Back</a>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save Employee</button>
+</form>
+
+{% if employee %}
+    <hr>
+    <h3>Salary Details</h3>
+    <a href="{% url 'add_salary' employee.id %}">
+        <button type="button"> Add Salary</button>
+    </a>
+{% endif %}
+
+<br><br>
+<a href="{% url 'employee_list' %}">⬅ Back</a>
 
 </body>
 </html>
