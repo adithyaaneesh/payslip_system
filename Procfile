@@ -1,0 +1,1 @@
+web:gunicorn emp_payslip_system.wsgi
